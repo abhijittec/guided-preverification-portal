@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+<div class="col-md-8">
+
+<div class="card shadow">
+
+<div class="card-header bg-warning">
+
+<h4>Upload Documents</h4>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST"
+      action="/upload_document"
+      enctype="multipart/form-data">
+
+<input type="hidden"
+       name="application_no"
+       value="{{ app_no }}">
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Select Document Type
+
+</label>
+
+<select class="form-control"
+        name="document_name">
+
+<option>10th Marks Card</option>
+
+<option>12th Marks Card</option>
+
+<option>Aadhaar Card</option>
+
+<option>Transfer Certificate</option>
+
+<option>Conduct Certificate</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Choose File
+
+</label>
+
+<input type="file"
+       class="form-control"
+       name="document"
+       required>
+
+</div>
+
+<button class="btn btn-success">
+
+Upload Document
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

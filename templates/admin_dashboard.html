@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+
+Admin Dashboard
+
+</h2>
+<form method="GET"
+      action="/admin"
+      class="mb-4">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<input type="text"
+       class="form-control"
+       name="search"
+       placeholder="Search Application Number">
+
+</div>
+
+<div class="col-md-3">
+
+<select class="form-control"
+        name="status">
+
+<option value="">All Status</option>
+
+<option>APPROVED</option>
+
+<option>REJECTED</option>
+
+<option>PENDING</option>
+
+</select>
+
+</div>
+
+<div class="col-md-2">
+
+<button class="btn btn-primary">
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+<!-- ================================= -->
+<!-- STUDENT TABLE -->
+<!-- ================================= -->
+
+<div class="card shadow mb-5">
+
+<div class="card-header bg-primary text-white">
+
+<h4>Students</h4>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered table-striped">
+
+<tr>
+
+<th>Application No</th>
+
+<th>Name</th>
+
+<th>Program</th>
+
+<th>Status</th>
+
+<th>Verification</th>
+
+<th>Actions</th>
+
+</tr>
+
+{% for s in students %}
+
+<tr>
+
+<td>{{ s.application_no }}</td>
+
+<td>{{ s.student_name }}</td>
+
+<td>{{ s.program }}</td>
+
+<td>{{ s.admission_status }}</td>
+
+<td>
+
+{% if s.verification_status == 'APPROVED' %}
+
+<span class="badge bg-success">
+
+APPROVED
+
+</span>
+
+{% elif s.verification_status == 'REJECTED' %}
+
+<span class="badge bg-danger">
+
+REJECTED
+
+</span>
+
+{% else %}
+
+<span class="badge bg-warning">
+
+PENDING
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="/approve/{{ s.application_no }}"
+   class="btn btn-success btn-sm">
+
+Approve
+
+</a>
+
+<a href="/reject/{{ s.application_no }}"
+   class="btn btn-danger btn-sm">
+
+Reject
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+<!-- ================================= -->
+<!-- APPOINTMENTS -->
+<!-- ================================= -->
+
+<div class="card shadow mb-5">
+
+<div class="card-header bg-success text-white">
+
+<h4>Appointments</h4>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Application No</th>
+
+<th>Date</th>
+
+<th>Time</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for a in appointments %}
+
+<tr>
+
+<td>{{ a.application_no }}</td>
+
+<td>{{ a.reporting_date }}</td>
+
+<td>{{ a.reporting_time }}</td>
+
+<td>{{ a.booking_status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+<!-- ================================= -->
+<!-- DOCUMENTS -->
+<!-- ================================= -->
+
+<div class="card shadow">
+
+<div class="card-header bg-warning">
+
+<h4>Uploaded Documents</h4>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Application No</th>
+
+<th>Document</th>
+
+<th>File</th>
+
+</tr>
+
+{% for d in documents %}
+
+<tr>
+
+<td>{{ d.application_no }}</td>
+
+<td>{{ d.document_name }}</td>
+
+<td>{{ d.file_name }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

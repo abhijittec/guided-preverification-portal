@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+
+<h3>Document Verification Checklist</h3>
+
+</div>
+
+<div class="card-body">
+
+<h4>{{ student.student_name }}</h4>
+
+<hr>
+
+<div class="alert alert-{{ color }}">
+
+<h5>Status: {{ status }}</h5>
+
+<p>
+Completed:
+{{ completed }}/{{ total }}
+</p>
+
+</div>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Document</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for doc in required_docs %}
+
+<tr>
+
+<td>{{ doc }}</td>
+
+<td>
+
+{% if doc in uploaded_names %}
+
+<span class="badge bg-success">
+
+Uploaded
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Pending
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a href="/upload/{{ student.application_no }}"
+   class="btn btn-primary">
+
+Upload More Documents
+<a href="/self_verify/{{ student.application_no }}"
+   class="btn btn-warning">
+
+Self Verification
+
+</a>
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

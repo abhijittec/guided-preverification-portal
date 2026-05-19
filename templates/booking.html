@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+
+<h3>Appointment Booking</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST"
+      action="/confirm_booking">
+
+<input type="hidden"
+       name="application_no"
+       value="{{ app_no }}">
+
+<div class="mb-3">
+
+<label>Select Reporting Date</label>
+
+<input type="date"
+       class="form-control"
+       name="reporting_date"
+       required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Select Reporting Time</label>
+
+<select class="form-control"
+        name="reporting_time">
+
+<option>09:00 AM</option>
+
+<option>10:00 AM</option>
+
+<option>11:00 AM</option>
+
+<option>12:00 PM</option>
+
+<option>02:00 PM</option>
+
+<option>03:00 PM</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-success">
+
+Confirm Appointment
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+<div class="card-header bg-info text-white">
+
+<h3>Guided Self Verification</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST"
+      action="/submit_verification">
+
+<input type="hidden"
+       name="application_no"
+       value="{{ app_no }}">
+
+<div class="mb-3">
+
+<label>Document Type</label>
+
+<select class="form-control"
+        name="document_name">
+
+<option>10th Marks Card</option>
+
+<option>12th Marks Card</option>
+
+<option>Aadhaar Card</option>
+
+<option>Transfer Certificate</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Is document clearly visible?</label>
+
+<select class="form-control"
+        name="document_clear">
+
+<option>Yes</option>
+<option>No</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Are all four corners visible?</label>
+
+<select class="form-control"
+        name="corners_visible">
+
+<option>Yes</option>
+<option>No</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Is signature/stamp visible?</label>
+
+<select class="form-control"
+        name="signature_visible">
+
+<option>Yes</option>
+<option>No</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Is this original document?</label>
+
+<select class="form-control"
+        name="original_document">
+
+<option>Yes</option>
+<option>No</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Is name matching across documents?</label>
+
+<select class="form-control"
+        name="name_matching">
+
+<option>Yes</option>
+<option>No</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-success">
+
+Submit Verification
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}
